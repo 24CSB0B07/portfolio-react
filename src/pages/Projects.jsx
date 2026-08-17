@@ -7,7 +7,6 @@ export default function Projects() {
     <section className="projects-section" id="projects">
       <div className="section-container">
         <h2 className="section-title">My Projects</h2>
-        <p className="section-subtitle">A collection of systems and applications I have developed</p>
         <ProjectsGrid projectsList={projects} />
       </div>
     </section>

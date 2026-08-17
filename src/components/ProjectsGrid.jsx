@@ -12,8 +12,6 @@ export default function ProjectsGrid({ projectsList }) {
           category={project.category}
           description={project.description}
           image={project.image}
-          techStack={project.techStack}
-          githubLink={project.githubLink}
         />
       ))}
     </div>
