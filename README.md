@@ -71,3 +71,7 @@ The following `useEffect` hooks were implemented in the codebase:
 2. **Form Client-side Validation (`ContactForm.jsx`)**
    - **Trigger**: Runs whenever `formData` (name, email, message) is modified.
    - **Why it is necessary**: Re-evaluates form field inputs, performs format checking (e.g. email regex validity and min-length message checks), updates error messages dynamically, and enables/disables the form submit button. Doing this inside an effect guarantees validations run instantly as the user types.
+
+3. **Simulated Content Loading Delay (`Home.jsx`)**
+   - **Trigger**: Runs once when the component mounts (empty dependency array).
+   - **Why it is necessary**: Sets a 1-second timeout timer on mount to simulate page loading behavior, displaying a modern loading spinner before transitioning to the profile section. It also cleans up the timeout when the component unmounts to prevent memory leaks.
