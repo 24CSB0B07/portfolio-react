@@ -57,7 +57,6 @@ To run the project locally, follow these steps:
 
 ### State-Lifting Decisions
 - **Theme State (`theme` / `setTheme`)**: Lifted to `App.jsx`. The theme affects the entire application (background colors, text colors) and is set on the `body` element. Since the toggle control is in `Navbar.jsx` and the actual styling applies globally to `App.jsx` and the document body, the state was lifted to `App.jsx` and passed down as props to `Navbar.jsx`.
-- **Responsive Menu State (`isOpen`)**: Stored locally in `Navbar.jsx` because the navigation toggle menu is self-contained within the header component and does not affect the rest of the page layouts.
 - **Project Card Expand State (`isExpanded`)**: Stored locally inside each individual `ProjectCard.jsx`. Since each project card has its own "View Details / Show Less" toggle button to show the full description, lifting this state is unnecessary and keeping it local ensures other project cards are not affected when one card is expanded.
 - **Form Values & Errors**: Stored locally in `ContactForm.jsx`. The input fields, touched fields, and client-side error states are only relevant to the contact form itself, and storing it locally prevents unnecessary re-rendering of parent page components.
 
@@ -69,10 +68,6 @@ The following `useEffect` hooks were implemented in the codebase:
    - **Trigger**: Runs whenever the `theme` state updates.
    - **Why it is necessary**: Synchronizes the updated theme with `localStorage` so the user's choice is remembered on subsequent visits. It also directly applies or removes the CSS class `light-theme` on the HTML `body` element, changing the layout style.
 
-2. **Responsive Menu Collapse on Window Resize (`Navbar.jsx`)**
-   - **Trigger**: Runs once when the component mounts (empty dependency array).
-   - **Why it is necessary**: Adds a `resize` event listener to the `window`. If a user rotates a mobile screen or resizes the browser window past the `768px` tablet threshold while the drawer is open, the menu is automatically closed to ensure standard desktop navigation is shown correctly. The cleanup function removes the listener to prevent memory leaks when the component unmounts.
-
-3. **Form Client-side Validation (`ContactForm.jsx`)**
+2. **Form Client-side Validation (`ContactForm.jsx`)**
    - **Trigger**: Runs whenever `formData` (name, email, message) is modified.
    - **Why it is necessary**: Re-evaluates form field inputs, performs format checking (e.g. email regex validity and min-length message checks), updates error messages dynamically, and enables/disables the form submit button. Doing this inside an effect guarantees validations run instantly as the user types.

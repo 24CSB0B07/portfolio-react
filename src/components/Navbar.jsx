@@ -1,48 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar({ theme, toggleTheme }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <header className="header">
       <div className="header-container">
         <NavLink to="/" className="logo">My Portfolio</NavLink>
         
-        <button 
-          className={`mobile-nav-toggle ${isOpen ? 'open' : ''}`} 
-          onClick={toggleMenu} 
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-
-        <nav className={`navbar ${isOpen ? 'active' : ''}`} id="navbar">
+        <nav className="navbar" id="navbar">
           <ul>
             <li>
               <NavLink 
                 to="/" 
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
               >
                 Home
               </NavLink>
@@ -51,7 +21,6 @@ export default function Navbar({ theme, toggleTheme }) {
               <NavLink 
                 to="/about" 
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
               >
                 About
               </NavLink>
@@ -60,7 +29,6 @@ export default function Navbar({ theme, toggleTheme }) {
               <NavLink 
                 to="/projects" 
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
               >
                 Projects
               </NavLink>
@@ -69,7 +37,6 @@ export default function Navbar({ theme, toggleTheme }) {
               <NavLink 
                 to="/contact" 
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
               >
                 Contact
               </NavLink>
