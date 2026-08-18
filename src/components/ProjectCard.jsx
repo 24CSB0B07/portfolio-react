@@ -13,7 +13,7 @@ export default function ProjectCard({ id, title, description, category, image,})
         <span className="project-category">{category}</span>
         <h3>{title}</h3>
 
-        <p className={`project-description ${isExpanded ? 'expanded' : ''}`}>
+        <p className={"project-description"}>
           {isExpanded ? description : `${description.slice(0, 85)}...`}
         </p>
         <button
