@@ -499,22 +499,29 @@ ul {
     transition: max-height var(--transition-normal);
 }
 
-.btn-details-toggle {
+.read-more-btn {
     align-self: flex-start;
     background: transparent;
     border: none;
     color: var(--primary);
-    font-size: 0.85rem;
+    font-family: inherit;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 20px;
     padding: 0;
-    transition: var(--transition-fast);
+    transition: color var(--transition-fast);
 }
 
-.btn-details-toggle:hover {
+.read-more-btn:hover {
     color: var(--primary-hover);
     text-decoration: underline;
+}
+
+.read-more-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
 }
 
 .project-tags {
